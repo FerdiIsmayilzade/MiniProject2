@@ -15,9 +15,9 @@ namespace Repository.Repositories
             _context = new AppDbContext();
             _dbSet=_context.Set<User>();
         }
-        public async Task CheckAsync(User user)
+        public async Task<bool> CheckAsync(string username, string password)
         {
-            await _dbSet.ContainsAsync(user);
+            return await _context.Set<User>().AnyAsync(x=>x.UserName==username && x.Password==password);
             await _context.SaveChangesAsync();
         }
     }

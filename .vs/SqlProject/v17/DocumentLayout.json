@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,16 +15,24 @@
       "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\helpers\\constants\\succesfullmessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{198656B2-A3F6-4C8A-9C6E-EB3F9AEA0AC9}|Domain\\Domain.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{198656B2-A3F6-4C8A-9C6E-EB3F9AEA0AC9}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\repository\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\helpers\\extentions\\consoleextention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\helpers\\extentions\\consoleextention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\service\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|solutionrelative:service\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\helpers\\constants\\errormessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\helpers\\constants\\errormessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\service\\services\\interfaces\\iuserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iuserservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\helpers\\menues\\usermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\helpers\\menues\\usermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +42,116 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SuccesfullMessages.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
-              "RelativeDocumentMoniker": "SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
-              "RelativeToolTip": "SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABAAAAA",
+              "DocumentIndex": 4,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\UserServices.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\UserServices.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\UserServices.cs",
+              "RelativeToolTip": "Service\\Services\\UserServices.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T08:21:47.251Z",
+              "WhenOpened": "2024-09-17T15:26:38.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUserServices.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\Interfaces\\IUserServices.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IUserServices.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\Interfaces\\IUserServices.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IUserServices.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T15:26:30.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserMenu.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Menues\\UserMenu.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Helpers\\Menues\\UserMenu.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Menues\\UserMenu.cs",
+              "RelativeToolTip": "SqlProject\\Helpers\\Menues\\UserMenu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T15:14:38.191Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Domain\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Domain\\Entities\\User.cs",
-              "RelativeToolTip": "Domain\\Entities\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "SuccesfullMessages.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
+              "RelativeToolTip": "SqlProject\\Helpers\\Constants\\SuccesfullMessages.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T08:20:09.069Z",
+              "WhenOpened": "2024-09-17T15:08:03.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\UserRepository.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T14:46:24.465Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ConsoleExtention.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Extentions\\ConsoleExtention.cs",
-              "RelativeDocumentMoniker": "SqlProject\\Helpers\\Extentions\\ConsoleExtention.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Extentions\\ConsoleExtention.cs",
-              "RelativeToolTip": "SqlProject\\Helpers\\Extentions\\ConsoleExtention.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAsAAAA",
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T07:47:00.313Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ErrorMessages.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Constants\\ErrorMessages.cs",
-              "RelativeDocumentMoniker": "SqlProject\\Helpers\\Constants\\ErrorMessages.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Helpers\\Constants\\ErrorMessages.cs",
-              "RelativeToolTip": "SqlProject\\Helpers\\Constants\\ErrorMessages.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T07:44:24.647Z",
+              "WhenOpened": "2024-09-17T14:46:20.588Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Program.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Program.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Program.cs",
+              "RelativeToolTip": "SqlProject\\Program.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAwBsAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T14:45:29.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\UserController.cs",
               "RelativeDocumentMoniker": "SqlProject\\Controller\\UserController.cs",
               "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\UserController.cs",
               "RelativeToolTip": "SqlProject\\Controller\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADwAAAAiAAAA",
+              "ViewState": "AQIAAGEAAAAAAAAAAAAQwG0AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-17T07:28:15.472Z",
               "EditorCaption": ""

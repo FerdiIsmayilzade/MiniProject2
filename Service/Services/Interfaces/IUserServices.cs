@@ -10,7 +10,7 @@ namespace Service.Services.Interfaces
 
         Task<IEnumerable<User>> GetAllAsync();
 
-        Task CheckAsync(User user);
+        Task<bool> CheckAsync(string username, string password);
 
     }
 }

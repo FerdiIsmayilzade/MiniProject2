@@ -14,9 +14,9 @@ namespace Service.Services
             _userRepository=new UserRepository();
         }
 
-        public async Task CheckAsync(User user)
+        public async Task<bool> CheckAsync(string username, string password)
         {
-           await _userRepository.CheckAsync(user);
+            return await _userRepository.CheckAsync(username,password);
         }
 
         public async Task CreateAsync(User entity)

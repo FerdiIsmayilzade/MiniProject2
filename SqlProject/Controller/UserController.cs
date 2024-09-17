@@ -15,7 +15,7 @@ namespace SqlProject.Controller
             _userServices = new UserServices();
         }
 
-        public async Task Register()
+        public async Task RegisterAsync()
         {
             Console.WriteLine("Enter the user fullname:");
         FullName: string fullName = Console.ReadLine();
@@ -50,9 +50,9 @@ namespace SqlProject.Controller
             }
             for (int i = 0; i < password.Length; i++)
             {
-                if (password[i].ToString() != password[i].ToString().ToLower() && password.Length < 9)
+                if (Convert.ToInt32(password[i]) !=null &&   password[i].ToString() != password[i].ToString().ToLower() && password.Length >= 8)
                 {
-                    _userServices.CreateAsync(new User { FullName = fullName,UserName=username, Email = email, Password = password });
+                     _userServices.CreateAsync(new User { FullName = fullName,UserName=username, Email = email, Password = password });
                     ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
                 }
                 else
@@ -61,6 +61,57 @@ namespace SqlProject.Controller
                     goto Password;
                 }
             }
+        }
+        public async Task<bool> LoginAsync()
+        {
+            Console.WriteLine("Enter the username:");
+            userName: string userName= Console.ReadLine();
+            if (string.IsNullOrEmpty(userName))
+            {
+                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                goto userName;
+            }
+            Console.WriteLine("Enter the password:");
+            password: string password= Console.ReadLine();    
+
+            if (string.IsNullOrEmpty(password))
+            {
+                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                goto password;
+            }
+            bool result= await _userServices.CheckAsync(userName, password);
+           
+            if(result)
+            {
+                ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        
+        }
+
+        public async Task DeleteAsync()
+        {
+            Console.WriteLine("Enter the user id:");
+            UserId: string idStr=Console.ReadLine();
+
+            bool isCorrectIdFormat = int.TryParse(idStr, out int id);
+
+            if (isCorrectIdFormat)
+            {
+                await _userServices.DeleteAsync(id);
+                ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullDeleted);
+
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                goto UserId;
+            }
+
         }
     }
 }
