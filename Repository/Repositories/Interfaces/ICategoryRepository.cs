@@ -1,0 +1,19 @@
+﻿using Domain.Entities;
+using System.Linq.Expressions;
+
+namespace Repository.Repositories.Interfaces
+{
+    public interface ICategoryRepository:IBaseRepository<Category>
+    {
+        Task<IEnumerable<Category>> GetAllWithProductsAsync();
+        Task<IEnumerable<Category>> SortWithCreatedDateAsync();
+
+        Task<IEnumerable<ArchiveCategories>> GetArchiveCategoriesAsync();
+
+        Task<IEnumerable<Category>> SearchAsync(Expression<Func<Category,bool>> expression);
+
+        Task UpdateAsync(int id,Category category);
+
+        Task<Category> GetByIdAsync(int id);
+    }
+}
