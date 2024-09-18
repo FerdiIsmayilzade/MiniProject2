@@ -29,10 +29,7 @@ namespace Repository.Repositories
             return await _dbSet.Include(x=>x.CategoryId).ToListAsync();
         }
 
-        public async Task<Product> GetByIdAsync(int id)
-        {
-            return await _dbSet.FirstOrDefaultAsync(x=>x.Id==id);
-        }
+        
 
         public async Task<IEnumerable<Product>> SearchByColorAsync(Expression<Func<Product, bool>> expression)
         {
@@ -54,12 +51,7 @@ namespace Repository.Repositories
             return await _dbSet.OrderBy(x=>x.Price).ToListAsync();  
         }
 
-        public async Task UpdateAsync(int id,Product product)
-        {
-           var existProduct=await _dbSet.FindAsync(id);
-           existProduct=product;
-           await _context.SaveChangesAsync();
-        }
+       
 
         
     }

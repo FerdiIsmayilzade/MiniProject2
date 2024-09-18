@@ -12,8 +12,6 @@ namespace Repository.Repositories.Interfaces
 
         Task<IEnumerable<Category>> SearchAsync(Expression<Func<Category,bool>> expression);
 
-        Task UpdateAsync(int id,Category category);
 
-        Task<Category> GetByIdAsync(int id);
     }
 }

@@ -17,7 +17,7 @@ namespace Repository.Repositories
         }
         public async Task<bool> CheckAsync(string username, string password)
         {
-            return await _context.Set<User>().AnyAsync(x=>x.UserName==username && x.Password==password);
+            return await _context.Set<User>().AnyAsync(x=>x.UserName==username  && x.Password==password);
             await _context.SaveChangesAsync();
         }
     }

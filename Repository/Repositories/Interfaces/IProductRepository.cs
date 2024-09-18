@@ -20,9 +20,7 @@ namespace Repository.Repositories.Interfaces
 
         Task<IEnumerable<Product>> SearchByColorAsync(Expression<Func<Product, bool>> expression);
 
-        Task UpdateAsync(int id,Product product);
 
-        Task<Product> GetByIdAsync(int id);    
 
     }
 }

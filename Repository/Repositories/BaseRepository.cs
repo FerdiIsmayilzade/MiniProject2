@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Repository.Data;
 using Repository.Repositories.Interfaces;
@@ -33,6 +34,16 @@ namespace Repository.Repositories
            return await _dbSet.ToListAsync();
         }
 
-        
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public Task UpdateAsync(int id, Category category)
+        {
+            throw new NotImplementedException();
+        }
+
+       
     }
 }

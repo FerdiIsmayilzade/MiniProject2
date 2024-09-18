@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Domain.Entities;
 using System.Linq.Expressions;
 
 namespace Repository.Repositories.Interfaces
@@ -10,8 +11,14 @@ namespace Repository.Repositories.Interfaces
         Task DeleteAsync(int id);
 
         Task<IEnumerable<T>> GetAllAsync();
-
         
+        Task UpdateAsync(int id, Category category);
+
+        Task<T> GetByIdAsync(int id);
+
+
+
+
 
 
 

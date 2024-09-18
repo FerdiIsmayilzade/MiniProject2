@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SqlProject.Controller
+﻿namespace SqlProject.Controller
 {
-    internal class ArchiveCategoriesController
+    public class ArchiveCategoriesController
     {
     }
 }
