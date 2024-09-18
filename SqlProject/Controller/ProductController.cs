@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Service.Services;
 
 namespace SqlProject.Controller
 {
-    internal class ProductController
+    public class ProductController
     {
+        private readonly ProductServices _productServices;
+
+        public ProductController()
+        {
+            _productServices = new ProductServices();
+        }
+
     }
 }

@@ -18,20 +18,20 @@ namespace Repository.Repositories
         }
         public async Task CreateAsync(T entity)
         {
-           await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await _dbSet.AddAsync(entity);
+            _context.SaveChanges();
         }
 
         public async Task DeleteAsync(int id)
         {
-           var existObject=await _dbSet.FindAsync(id);
+            var existObject = await _dbSet.FindAsync(id);
             _dbSet.Remove(existObject);
             await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-           return await _dbSet.ToListAsync();
+            return await _dbSet.ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
@@ -39,11 +39,19 @@ namespace Repository.Repositories
             return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task UpdateAsync(int id, Category category)
+        public async Task UpdateAsync(int id, T entity)
         {
-            throw new NotImplementedException();
+            var existCategory = await _dbSet.FindAsync(id);
+            _dbSet.Update(existCategory);
+            await _context.SaveChangesAsync();
         }
 
-       
+
+
+
+
+
+
+
     }
 }

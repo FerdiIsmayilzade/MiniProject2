@@ -12,7 +12,7 @@ namespace Repository.Repositories.Interfaces
 
         Task<IEnumerable<T>> GetAllAsync();
         
-        Task UpdateAsync(int id, Category category);
+        Task UpdateAsync(int id, T entity);
 
         Task<T> GetByIdAsync(int id);
 

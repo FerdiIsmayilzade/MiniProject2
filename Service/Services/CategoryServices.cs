@@ -55,7 +55,17 @@ namespace Service.Services
 
         public async Task UpdateAsync(int id, Category category)
         {
-           await _categoryRepository.UpdateAsync(id, category);
+            var existCategory=await _categoryRepository.GetByIdAsync(id);
+            if(string.IsNullOrEmpty(category.Name))
+            {
+                category.Name = existCategory.Name;
+            }
+            await _categoryRepository.UpdateAsync(id, category);
         }
+
+        
+           
+
+        
     }
 }
