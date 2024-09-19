@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
+using Service.Helpers.Exceptions;
 using Service.Services.Interfaces;
 
 namespace Service.Services
@@ -20,7 +21,7 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            var existCategory= await _categoryRepository.GetByIdAsync(id);
+            var existCategory= await _categoryRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
             await _categoryRepository.DeleteAsync(existCategory);
         }
 
@@ -46,7 +47,7 @@ namespace Service.Services
 
         public async Task<Category> GetByIdAsync(int id)
         {
-            return await _categoryRepository.GetByIdAsync(id);
+            return await _categoryRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
         }
 
         public async Task<IEnumerable<Category>> SearchAsync(string searchText)
@@ -56,9 +57,9 @@ namespace Service.Services
 
         public async Task UpdateAsync(int id, Category category)
         {
-            var existCategory=await _categoryRepository.GetByIdAsync(id);
+            var existCategory = await _categoryRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
            
-            if(string.IsNullOrEmpty(category.Name))
+            if(string.IsNullOrEmpty(category.Name.Trim()))
             {
                 category.Name = existCategory.Name;
                 await _categoryRepository.UpdateAsync(existCategory);

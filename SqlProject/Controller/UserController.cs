@@ -4,6 +4,8 @@ using Service.Services;
 using SqlProject.Helpers.Constants;
 using Domain.Entities;
 using System.ComponentModel.Design;
+using System.Text.RegularExpressions;
+using Service.Services.Interfaces;
 
 namespace SqlProject.Controller
 {
@@ -20,46 +22,69 @@ namespace SqlProject.Controller
         {
             try
             {
+                var data =await _userServices.GetAllAsync();
                 Console.WriteLine("Enter the user fullname:");
             FullName: string fullName = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(fullName.Trim()))
+                string symbols= @"^[A-Za-z\s]+$";
+                if (string.IsNullOrEmpty(fullName.Trim()) || !Regex.IsMatch(fullName,symbols))
                 {
-                    ConsoleColor.Red.WriteConsole("Format is wrong");
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto FullName;
                 }
                 if (fullName.Any(char.IsDigit))
                 {
-                    ConsoleColor.Red.WriteConsole("Format is wrong");
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto FullName;
                 } 
-                var data = await _userServices.GetAllAsync();
-                foreach (var item in data)
-                {
-                    if (item.FullName.Trim().ToLower() == fullName.Trim().ToLower())
-                    {
-                        ConsoleColor.Red.WriteConsole("Data exist");
-                        goto FullName;
 
-                    }
-
-
-                }
+               
                 Console.WriteLine("Enter the username:");
             UserName: string username = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(username))
+                if (string.IsNullOrEmpty(username.Trim()))
                 {
-                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto UserName;
                 }
+                foreach (var item in data)
+                {
+                    if (item.UserName.ToLower().Trim() == username.ToLower().Trim())
+                    {
+                        ConsoleColor.Red.WriteConsole("Data exist");
+                        goto UserName;
+                    }
+                }
+
                 Console.WriteLine("Enter the email:");
             Email: string email = Console.ReadLine();
 
-                if (string.IsNullOrEmpty(email))
+                if (string.IsNullOrEmpty(email.Trim()))
                 {
-                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto Email;
+                }
+                if (!email.Contains('@'))
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                    goto Email;
+                }
+                for (int i = 0; i < email.Length; i++)
+                {
+                    if (email[0] == '@')
+                    {
+                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                        goto Email;
+                    }
+                }
+
+                foreach (var item in data)
+                {
+                    if (item.Email.ToLower().Trim() == email.ToLower().Trim())
+                    {
+                        ConsoleColor.Red.WriteConsole("Data exist");
+                        goto Email;
+                    }
                 }
                 Console.WriteLine("Enter the password(min 8 characters):");
             Password: string password = Console.ReadLine();
@@ -122,24 +147,62 @@ namespace SqlProject.Controller
 
         public async Task DeleteAsync()
         {
-                Console.WriteLine("Enter the user id:");
-            UserId: string idStr = Console.ReadLine();
+            Console.WriteLine("Enter the category id:");
+           Id: string idStr = Console.ReadLine();
 
-                bool isCorrectIdFormat = int.TryParse(idStr, out int id);
-
-                if (isCorrectIdFormat)
+            bool isCorrectIdFormat = int.TryParse(idStr, out int id);
+            if (isCorrectIdFormat)
+            {
+                try
                 {
-                    ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullDeleted);
 
-                    await _userServices.DeleteAsync(id);
+
+
+
+
+                    ConsoleColor.Yellow.WriteConsole("Are you sure this user should be deleted?");
+                Input: string inputStr = Console.ReadLine();
+                    bool isCorrectInputFormat = int.TryParse(inputStr, out int input);
+
+                    if (isCorrectInputFormat)
+                    {
+                        switch (input)
+                        {
+                            case 1:
+                                await _userServices.DeleteAsync(id);
+                                ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullDeleted);
+                                break;
+                            case 2:
+                                return;
+                                break;
+                            default:
+                                ConsoleColor.Red.WriteConsole("No correct option was specified.Please try again:");
+                                goto Input;
+                                break;
+
+
+                        }
+                    }
+                    else
+                    {
+                        ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                        goto Input;
+                    }
 
                 }
-                else
+                catch (Exception ex)
                 {
-                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                    goto UserId;
+                    ConsoleColor.Red.WriteConsole("Data not found" + "," + "Please try again:");
+                    goto Id;
                 }
-            
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                goto Id;
+            }
+
+
 
         }
     }
