@@ -18,9 +18,18 @@ namespace Repository.Repositories
             _dbSet=_context.Set<Category>();
             _archiveCategoryRepository = new ArchiveCategoryRepository();
         }
-        public async Task<IEnumerable<Category>> SortWithCreatedDateAsync()
+        public async Task<IEnumerable<Category>> SortWithCreatedDateAsync(int input)
         {
-            return await _dbSet.OrderBy(c=>c.CreatedDate).ToListAsync();
+            if (input == 1)
+            {
+                return await _dbSet.OrderBy(c=> c.CreatedDate).ToListAsync();
+            }
+            else
+            {
+                return await _dbSet.OrderByDescending(c=> c.CreatedDate).ToListAsync();
+            }
+        
+
         }
 
         public async Task<IEnumerable<Category>> GetAllWithProductsAsync()

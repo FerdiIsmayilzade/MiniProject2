@@ -46,8 +46,6 @@ namespace Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("ArchiveCategories");
                 });
 
@@ -142,17 +140,6 @@ namespace Repository.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ArchiveCategories", b =>
-                {
-                    b.HasOne("Domain.Entities.Category", "Category")
-                        .WithMany("Categories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("Domain.Entities.Product", b =>
                 {
                     b.HasOne("Domain.Entities.Category", "Category")
@@ -166,8 +153,6 @@ namespace Repository.Migrations
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
                 {
-                    b.Navigation("Categories");
-
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

@@ -8,7 +8,6 @@ namespace Domain.Entities
 
         public ICollection<Product> Products { get; set; }
 
-        public ICollection<ArchiveCategories> Categories { get; set; }
 
     }
 }

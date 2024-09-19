@@ -41,14 +41,29 @@ namespace Repository.Repositories
             return await _dbSet.Where(expression).ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> SortByCreatedDateAsync()
+        public async Task<IEnumerable<Product>> SortByCreatedDateAsync(int input)
         {
-            return await _dbSet.OrderBy(x=>x.CreatedDate).ToListAsync();
+            if(input == 1)
+            {
+                return await _dbSet.OrderBy(x => x.CreatedDate).ToListAsync();
+            }
+            else
+            {
+                return await _dbSet.OrderByDescending(x=>x.CreatedDate).ToListAsync();
+            }
         }
 
-        public async Task<IEnumerable<Product>> SortWithPriceAsync()
+        public async Task<IEnumerable<Product>> SortWithPriceAsync(int input)
         {
-            return await _dbSet.OrderBy(x=>x.Price).ToListAsync();  
+            if(input == 1)
+            {
+                return await _dbSet.OrderBy(c=>c.Price).ToListAsync();
+            }
+            else
+            {
+                return await _dbSet.OrderByDescending(c=>c.Price).ToListAsync();
+            }
+            
         }
 
        

@@ -11,7 +11,7 @@ namespace Service.Services.Interfaces
         Task<IEnumerable<Category>> GetAllAsync();
 
         Task<IEnumerable<Category>> GetAllWithProductsAsync();
-        Task<IEnumerable<Category>> SortWithCreatedDateAsync();
+        Task<IEnumerable<Category>> SortWithCreatedDateAsync(int input);
 
         Task<IEnumerable<ArchiveCategories>> GetArchiveCategoriesAsync();
 

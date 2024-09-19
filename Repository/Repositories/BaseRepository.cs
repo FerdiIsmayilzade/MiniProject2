@@ -19,13 +19,13 @@ namespace Repository.Repositories
         public async Task CreateAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(T entity)
         {
-            var existObject = await _dbSet.FindAsync(id);
-            _dbSet.Remove(existObject);
+            
+            _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
         }
 
@@ -39,10 +39,10 @@ namespace Repository.Repositories
             return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task UpdateAsync(int id, T entity)
+        public async Task UpdateAsync(T entity)
         {
-            var existCategory = await _dbSet.FindAsync(id);
-            _dbSet.Update(existCategory);
+            
+            _dbSet.Update(entity);
             await _context.SaveChangesAsync();
         }
 

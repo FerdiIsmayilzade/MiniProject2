@@ -3,6 +3,7 @@ using SqlProject.Helpers.Extentions;
 using Service.Services;
 using SqlProject.Helpers.Constants;
 using Domain.Entities;
+using System.ComponentModel.Design;
 
 namespace SqlProject.Controller
 {
@@ -17,51 +18,77 @@ namespace SqlProject.Controller
 
         public async Task RegisterAsync()
         {
-            Console.WriteLine("Enter the user fullname:");
-        FullName: string fullName = Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Enter the user fullname:");
+            FullName: string fullName = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(fullName))
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                goto FullName;
-            }
-            Console.WriteLine("Enter the username:");
-        UserName: string username = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(username))
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                goto UserName;
-            }
-            Console.WriteLine("Enter the email:");
-        Email: string email = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(email))
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                goto Email;
-            }
-            Console.WriteLine("Enter the password(min 8 characters):");
-        Password: string password = Console.ReadLine();
-            if (string.IsNullOrEmpty(password))
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                goto Password;
-            }
-            for (int i = 0; i < password.Length; i++)
-            {
-                if (Convert.ToInt32(password[i]) !=null &&   password[i].ToString() != password[i].ToString().ToLower() && password.Length >= 8)
+                if (string.IsNullOrEmpty(fullName.Trim()))
                 {
-                     _userServices.CreateAsync(new User { FullName = fullName,UserName=username, Email = email, Password = password });
-                    ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
+                    ConsoleColor.Red.WriteConsole("Format is wrong");
+                    goto FullName;
                 }
-                else
+                if (fullName.Any(char.IsDigit))
+                {
+                    ConsoleColor.Red.WriteConsole("Format is wrong");
+                    goto FullName;
+                } 
+                var data = await _userServices.GetAllAsync();
+                foreach (var item in data)
+                {
+                    if (item.FullName.Trim().ToLower() == fullName.Trim().ToLower())
+                    {
+                        ConsoleColor.Red.WriteConsole("Data exist");
+                        goto FullName;
+
+                    }
+
+
+                }
+                Console.WriteLine("Enter the username:");
+            UserName: string username = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(username))
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    goto UserName;
+                }
+                Console.WriteLine("Enter the email:");
+            Email: string email = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(email))
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    goto Email;
+                }
+                Console.WriteLine("Enter the password(min 8 characters):");
+            Password: string password = Console.ReadLine();
+                if (string.IsNullOrEmpty(password))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
                     goto Password;
                 }
+                for (int i = 0; i < password.Length; i++)
+                {
+                    if (Convert.ToInt32(password[i]) != null && password[i].ToString() != password[i].ToString().ToLower() && password.Length >= 8)
+                    {
+                        await _userServices.CreateAsync(new User { FullName = fullName, UserName = username, Email = email, Password = password });
+                        ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
+                    }
+                    else
+                    {
+                        ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                        goto Password;
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                ConsoleColor.Red.WriteConsole(ex.Message+","+"Please try again:");
             }
         }
+
         public async Task<bool> LoginAsync()
         {
             Console.WriteLine("Enter the username:");
@@ -95,22 +122,24 @@ namespace SqlProject.Controller
 
         public async Task DeleteAsync()
         {
-            Console.WriteLine("Enter the user id:");
-            UserId: string idStr=Console.ReadLine();
+                Console.WriteLine("Enter the user id:");
+            UserId: string idStr = Console.ReadLine();
 
-            bool isCorrectIdFormat = int.TryParse(idStr, out int id);
+                bool isCorrectIdFormat = int.TryParse(idStr, out int id);
 
-            if (isCorrectIdFormat)
-            {
-                await _userServices.DeleteAsync(id);
-                ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullDeleted);
+                if (isCorrectIdFormat)
+                {
+                    ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullDeleted);
 
-            }
-            else
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                goto UserId;
-            }
+                    await _userServices.DeleteAsync(id);
+
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    goto UserId;
+                }
+            
 
         }
     }

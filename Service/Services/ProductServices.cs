@@ -22,7 +22,8 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            await _productRepository.DeleteAsync(id);
+            var existProduct=await _productRepository.GetByIdAsync(id);
+            await _productRepository.DeleteAsync(existProduct);
         }
 
         public async Task<IEnumerable<Product>> FilterByCategoryNameAsync(string categoryName)
@@ -55,19 +56,19 @@ namespace Service.Services
             return await _productRepository.SearchByNameAsync(c=>c.Name.Contains(searchText));
         }
 
-        public Task<IEnumerable<Product>> SortByCreatedDateAsync()
+        public Task<IEnumerable<Product>> SortByCreatedDateAsync(int input)
         {
-            return _productRepository.SortByCreatedDateAsync();
+            return _productRepository.SortByCreatedDateAsync(input);
         }
 
-        public Task<IEnumerable<Product>> SortWithPriceAsync()
+        public Task<IEnumerable<Product>> SortWithPriceAsync(int input)
         {
-            return _productRepository.SortWithPriceAsync();
+            return _productRepository.SortWithPriceAsync(input);
         }
 
         public async Task UpdateAsync(int id, Product product)
         {
-            await _productRepository.UpdateAsync(id, product);
+            await _productRepository.UpdateAsync( product);
         }
     }
 }

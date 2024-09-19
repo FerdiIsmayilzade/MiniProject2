@@ -20,7 +20,8 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            await _categoryRepository.DeleteAsync(id);
+            var existCategory= await _categoryRepository.GetByIdAsync(id);
+            await _categoryRepository.DeleteAsync(existCategory);
         }
 
         public Task<IEnumerable<Category>> GetAllAsync()
@@ -28,9 +29,9 @@ namespace Service.Services
            return _categoryRepository.GetAllAsync();
         }
 
-        public async Task<IEnumerable<Category>> SortWithCreatedDateAsync()
+        public async Task<IEnumerable<Category>> SortWithCreatedDateAsync(int input)
         {
-           return await _categoryRepository.SortWithCreatedDateAsync();
+           return await _categoryRepository.SortWithCreatedDateAsync(input);
         }
 
         public async Task<IEnumerable<Category>> GetAllWithProductsAsync()
@@ -56,15 +57,19 @@ namespace Service.Services
         public async Task UpdateAsync(int id, Category category)
         {
             var existCategory=await _categoryRepository.GetByIdAsync(id);
+           
             if(string.IsNullOrEmpty(category.Name))
             {
                 category.Name = existCategory.Name;
+                await _categoryRepository.UpdateAsync(existCategory);
             }
-            await _categoryRepository.UpdateAsync(id, category);
+            else
+            {
+                existCategory.Name = category.Name;
+                await _categoryRepository.UpdateAsync(existCategory);
+            }
+            
         }
-
-        
-           
 
         
     }

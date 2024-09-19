@@ -6,24 +6,24 @@
 
 //ShowUserMenu();
 
-//bool isContinued=true;
+//bool isContinued = true;
 
 //do
 //{
 //    UserController userController = new UserController();
 //    ConsoleColor.Yellow.WriteConsole("Enter the menu number:");
-//    MenuNumber: string menuNumberStr=Console.ReadLine();
+//MenuNumber: string menuNumberStr = Console.ReadLine();
 
 //    bool isCorrectNumberFormat = int.TryParse(menuNumberStr, out int menuNumber);
 //    if (isCorrectNumberFormat)
 //    {
-//        switch(menuNumber)
+//        switch (menuNumber)
 //        {
 //            case (int)UserMenu.Register:
-//                userController.RegisterAsync();
+//                await userController.RegisterAsync();
 //                break;
 //            case (int)UserMenu.Login:
-//                if(await userController.LoginAsync())
+//                if (await userController.LoginAsync())
 //                {
 
 //                }
@@ -46,7 +46,7 @@
 //        goto MenuNumber;
 //    }
 
-//} while(isContinued);
+//} while (isContinued);
 
 
 
@@ -67,4 +67,4 @@ using SqlProject.Controller;
 
 CategoryController categoryController = new CategoryController();
 
-categoryController.DeleteAsync();
+await categoryController.SortWithCreatedDay();

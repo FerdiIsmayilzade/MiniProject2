@@ -26,7 +26,8 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            await _userRepository.DeleteAsync(id);
+            var existUser=await _userRepository.GetByIdAsync(id);
+            await _userRepository.DeleteAsync(existUser);
         }
 
         public Task<IEnumerable<User>> GetAllAsync()

@@ -16,9 +16,9 @@ namespace Service.Services.Interfaces
 
         Task<IEnumerable<Product>> GetAllWithCategoryIdAsync();
 
-        Task<IEnumerable<Product>> SortWithPriceAsync();
+        Task<IEnumerable<Product>> SortWithPriceAsync(int input);
 
-        Task<IEnumerable<Product>> SortByCreatedDateAsync();
+        Task<IEnumerable<Product>> SortByCreatedDateAsync(int input);
 
         Task<IEnumerable<Product>> SearchByColorAsync(string searchText);
 
