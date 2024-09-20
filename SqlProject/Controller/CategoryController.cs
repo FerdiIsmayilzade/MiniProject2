@@ -98,7 +98,8 @@ namespace SqlProject.Controller
 
 
                         ConsoleColor.Yellow.WriteConsole("Are you sure this category should be deleted?");
-                    Input: string inputStr = Console.ReadLine();
+                          Console.WriteLine("If you are sure, press button 1, if you are not sure, press button 2");
+                Input: string inputStr = Console.ReadLine();
                         bool isCorrectInputFormat = int.TryParse(inputStr, out int input);
 
                         if (isCorrectInputFormat)
@@ -240,9 +241,9 @@ namespace SqlProject.Controller
             Console.WriteLine("Enter the category id:");
             CategoryId: string idStr=Console.ReadLine();
 
-            bool isCorrectIdForma=int.TryParse(idStr, out int id);
+            bool isCorrectIdFormat=int.TryParse(idStr, out int id);
 
-            if (isCorrectIdForma)
+            if (isCorrectIdFormat)
             {
                 try
                 {
@@ -251,7 +252,7 @@ namespace SqlProject.Controller
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex.Message+","+"Please try again:");
+                    ConsoleColor.Red.WriteConsole(ex.Message+","+"Please try again:");
                     goto CategoryId;
 
                 }

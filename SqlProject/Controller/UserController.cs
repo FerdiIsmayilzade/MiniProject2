@@ -118,7 +118,7 @@ namespace SqlProject.Controller
         {
             Console.WriteLine("Enter the username:");
             userName: string userName= Console.ReadLine();
-            if (string.IsNullOrEmpty(userName))
+            if (string.IsNullOrEmpty(userName.Trim()))
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
                 goto userName;
@@ -161,6 +161,8 @@ namespace SqlProject.Controller
 
 
                     ConsoleColor.Yellow.WriteConsole("Are you sure this user should be deleted?");
+                      Console.WriteLine("If you are sure, press button 1, if you are not sure, press button 2");
+
                 Input: string inputStr = Console.ReadLine();
                     bool isCorrectInputFormat = int.TryParse(inputStr, out int input);
 

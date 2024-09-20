@@ -24,9 +24,9 @@ namespace Repository.Repositories
             return await _dbSet.Where(expression).ToListAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetAllWithCategoryIdAsync()
+        public async Task<IEnumerable<Product>> GetAllWithCategoryIdAsync(int id)
         {
-            return await _dbSet.Include(x=>x.CategoryId).ToListAsync();
+            return await _context.Products.Where(m => m.CategoryId == id).ToListAsync();
         }
 
         

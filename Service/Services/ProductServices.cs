@@ -9,10 +9,12 @@ namespace Service.Services
     public class ProductServices : IProductService
     {
         private readonly IProductRepository _productRepository;
+      
 
         public ProductServices()
         {
             _productRepository=new ProductRepository();
+        
         }
 
         public async Task CreateAsync(Product entity)
@@ -36,9 +38,9 @@ namespace Service.Services
            return await _productRepository.GetAllAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetAllWithCategoryIdAsync()
+        public async Task<IEnumerable<Product>> GetAllWithCategoryIdAsync(int id)
         {
-            return await _productRepository.GetAllWithCategoryIdAsync();
+            return await _productRepository.GetAllWithCategoryIdAsync(id);
         }
 
         public async Task<Product> GetByIdAsync(int id)

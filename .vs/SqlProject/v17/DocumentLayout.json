@@ -1,12 +1,181 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\controller\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\controller\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\service\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\repository\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\controller\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\controller\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\repository\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C518B1F3-6C7D-4DB8-BB8B-C4B9CB55778F}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\controller\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\sqlproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78F1ACBE-DDE6-4286-A60C-A48CA58B2008}|SqlProject\\SqlProject.csproj|solutionrelative:sqlproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\service\\services\\productservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A8FE51D-C65D-4CA8-860B-837439F83040}|Service\\Service.csproj|solutionrelative:service\\services\\productservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{198656B2-A3F6-4C8A-9C6E-EB3F9AEA0AC9}|Domain\\Domain.csproj|c:\\users\\acer\\onedrive\\masa\u00FCst\u00FC\\csharp\\sqlproject\\domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{198656B2-A3F6-4C8A-9C6E-EB3F9AEA0AC9}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\ProductRepository.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA1wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T08:30:25.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\CategoryRepository.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Repository\\Repositories\\CategoryRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\CategoryRepository.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwCAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T08:30:13.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Program.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Program.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Program.cs",
+              "RelativeToolTip": "SqlProject\\Program.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEoAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:42:27.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\ProductController.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Controller\\ProductController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\ProductController.cs",
+              "RelativeToolTip": "SqlProject\\Controller\\ProductController.cs",
+              "ViewState": "AQIAALoAAAAAAAAAAAAIwMABAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:09:06.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductServices.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\ProductServices.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\ProductServices.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\ProductServices.cs",
+              "RelativeToolTip": "Service\\Services\\ProductServices.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAgwAgAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T06:27:32.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\Interfaces\\IProductService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IProductService.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Service\\Services\\Interfaces\\IProductService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IProductService.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T06:25:09.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\CategoryController.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Controller\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\CategoryController.cs",
+              "RelativeToolTip": "SqlProject\\Controller\\CategoryController.cs",
+              "ViewState": "AQIAAJMAAAAAAAAAAAAowJ4AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:09:53.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Domain\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Product.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\Domain\\Entities\\Product.cs",
+              "RelativeToolTip": "Domain\\Entities\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:16:44.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\UserController.cs",
+              "RelativeDocumentMoniker": "SqlProject\\Controller\\UserController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Masa\u00FCst\u00FC\\CSharp\\SqlProject\\SqlProject\\Controller\\UserController.cs",
+              "RelativeToolTip": "SqlProject\\Controller\\UserController.cs",
+              "ViewState": "AQIAAKwAAAAAAAAAAAAkwNMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T06:18:32.589Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

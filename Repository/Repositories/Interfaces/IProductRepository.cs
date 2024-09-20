@@ -12,7 +12,7 @@ namespace Repository.Repositories.Interfaces
 
         Task<IEnumerable<Product>> FilterByCategoryNameAsync(Expression<Func<Product, bool>> expression);
 
-        Task<IEnumerable<Product>> GetAllWithCategoryIdAsync();
+        Task<IEnumerable<Product>> GetAllWithCategoryIdAsync(int id);
 
         Task<IEnumerable<Product>> SortWithPriceAsync(int input);
 
