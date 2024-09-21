@@ -26,17 +26,14 @@ namespace SqlProject.Controller
                 Console.WriteLine("Enter the user fullname:");
             FullName: string fullName = Console.ReadLine();
 
-                string symbols= @"^[A-Za-z\s]+$";
+                string symbols = @"^[\p{L}\p{M}' \.\-]+$";
+
                 if (string.IsNullOrEmpty(fullName.Trim()) || !Regex.IsMatch(fullName,symbols))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto FullName;
                 }
-                if (fullName.Any(char.IsDigit))
-                {
-                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                    goto FullName;
-                } 
+                
 
                
                 Console.WriteLine("Enter the username:");

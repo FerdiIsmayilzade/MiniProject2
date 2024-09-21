@@ -21,7 +21,7 @@ namespace Service.Services
 
         public async Task DeleteAsync(int id)
         {
-            var existCategory= await _categoryRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
+            var existCategory = await _categoryRepository.GetByIdAsync(id);
             await _categoryRepository.DeleteAsync(existCategory);
         }
 
@@ -47,7 +47,7 @@ namespace Service.Services
 
         public async Task<Category> GetByIdAsync(int id)
         {
-            return await _categoryRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
+            return await _categoryRepository.GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<Category>> SearchAsync(string searchText)
@@ -57,7 +57,7 @@ namespace Service.Services
 
         public async Task UpdateAsync(int id, Category category)
         {
-            var existCategory = await _categoryRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
+            var existCategory = await _categoryRepository.GetByIdAsync(id);
            
             if(string.IsNullOrEmpty(category.Name.Trim()))
             {

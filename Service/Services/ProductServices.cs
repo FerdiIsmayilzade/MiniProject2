@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Repository.Repositories;
 using Repository.Repositories.Interfaces;
+using Service.Helpers.Exceptions;
 using Service.Services.Interfaces;
 using System.Linq.Expressions;
 
@@ -70,7 +71,22 @@ namespace Service.Services
 
         public async Task UpdateAsync(int id, Product product)
         {
-            await _productRepository.UpdateAsync( product);
+            var existCategory = await _productRepository.GetByIdAsync(id) ?? throw new NotFoundException("Data not found");
+
+            if (string.IsNullOrEmpty(product.Name.Trim()))
+            {
+                product.Name = existCategory.Name;
+                product.Description = existCategory.Description;
+                product.Color = existCategory.Color;
+                await _productRepository.UpdateAsync(existCategory);
+            }
+            else
+            {
+                existCategory.Name = product.Name;
+                existCategory.Description = product.Description;
+                existCategory.Color = product.Color;
+                await _productRepository.UpdateAsync(existCategory);
+            }
         }
     }
 }

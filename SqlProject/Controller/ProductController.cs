@@ -30,7 +30,7 @@ ProductPrice:{item.Price}
 ProductDescription:{item.Description}
 ProductColor:{item.Color}
 ProductCount:{item.Count}
-ProductCategory:{item.Category}
+ProductCategoryId:{item.CategoryId}
 CreatedDate:{item.CreatedDate}");
             }
         }
@@ -42,7 +42,8 @@ CreatedDate:{item.CreatedDate}");
                 Console.WriteLine("Enter the product name:");
             ProductName: string productName = Console.ReadLine();
 
-                string symbols = @"^[A-Za-z\s]+$";
+                string symbols = @"^[\p{L}\p{M}' \.\-]+$";
+
                 if (string.IsNullOrEmpty(productName.Trim()))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
@@ -65,6 +66,11 @@ CreatedDate:{item.CreatedDate}");
                 bool isCorrectFormat = float.TryParse(productPriceStr, out float productPrice);
                 if (isCorrectFormat)
                 {
+                    if(productPrice <= 0)
+                    {
+                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                        goto ProductPrice;
+                    }
                     Console.WriteLine("Enter the product description:");
                 ProductDescription: string productDescription = Console.ReadLine();
 
@@ -73,21 +79,12 @@ CreatedDate:{item.CreatedDate}");
                         ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                         goto ProductDescription;
                     }
-                    else if (productDescription.Any(char.IsDigit))
-                    {
-                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                        goto ProductDescription;
-                    }
-                    else if (!productDescription.Any(char.IsLetter))
-                    {
-                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                        goto ProductDescription;
-                    }
+                  
 
                     Console.WriteLine("Enter the product color");
                 ProductColor: string productColor = Console.ReadLine();
 
-                    if (string.IsNullOrEmpty(productColor.Trim()) || !Regex.IsMatch(productColor, symbols) || productColor.Any(char.IsDigit))
+                    if (string.IsNullOrEmpty(productColor.Trim()) || !Regex.IsMatch(productColor, symbols))
                     {
                         ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                         goto ProductColor;
@@ -103,34 +100,43 @@ CreatedDate:{item.CreatedDate}");
 
                     if (isCorrectCountFormat)
                     {
+                        if(productCount < 0)
+                        {
+                            ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                            goto ProductCount;
+                        }
                         var response = await _categoryServices.GetAllAsync();
                         foreach (var item in response)
                         {
                             ConsoleColor.Blue.WriteConsole($"{item.Id} {item.Name}");
                         }
                         Console.WriteLine("Choose CategoryId");
-                        CategoryName: string idStr = Console.ReadLine();
-                        if (string.IsNullOrEmpty(idStr))
+                        Id: string idStr = Console.ReadLine();
+                        if (string.IsNullOrEmpty(idStr.Trim()))
                         {
                             ConsoleColor.Red.WriteConsole("This can not be empty");
-                            goto CategoryName;
+                            goto Id;
                         }
 
-                        Console.WriteLine("Enter the CategoryId:");
-                    ProductCategoryId: string categoryIdStr = Console.ReadLine();
+                       
 
-                        bool isCorrectIdFormat = int.TryParse(categoryIdStr, out int categoryId);
+                        bool isCorrectIdFormat = int.TryParse(idStr, out int id);
                         if (isCorrectIdFormat)
                         {
-                            Category category = await _categoryServices.GetByIdAsync(categoryId);
+                            if(id <= 0)
+                            {
+                                ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                                goto Id;
+                            }
+
+                            Category category = await _categoryServices.GetByIdAsync(id);
                             if (category == null)
                             {
                                 ConsoleColor.Red.WriteConsole("Category not found");
                                 return;
                             }
-                        }
-                        if (isCorrectIdFormat)
-                        {
+                        
+                       
                             ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
                             await _productServices.CreateAsync(new Product
                             {
@@ -139,14 +145,14 @@ CreatedDate:{item.CreatedDate}");
                                 Description = productDescription,
                                 Color = productColor,
                                 Count = productCount,
-                                CategoryId = categoryId
+                                CategoryId = id
                             });
 
                         }
                         else
                         {
                             ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                            goto ProductCategoryId;
+                            goto Id;
                         }
 
                     }
@@ -187,20 +193,30 @@ CreatedDate:{item.CreatedDate}");
         }
         public async Task DeleteAsync()
         {
+            foreach (var item in await _productServices.GetAllAsync())
+            {
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.Price} {item.Description} {item.Color} {item.Count} {item.CategoryId} {item.CreatedDate} ");
+
+            }
             Console.WriteLine("Enter the product id:");
         Id: string idStr = Console.ReadLine();
 
             bool isCorrectIdFormat = int.TryParse(idStr, out int id);
             if (isCorrectIdFormat)
             {
-                try
+                
+                var response=await _productServices.GetByIdAsync(id);
+
+                if (response == null)
                 {
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto Id;
+                }
 
 
 
 
-
-                    ConsoleColor.Yellow.WriteConsole("Are you sure this product should be deleted?");
+                ConsoleColor.Yellow.WriteConsole("Are you sure this product should be deleted?");
                     Console.WriteLine("If you are sure, press button 1, if you are not sure, press button 2");
                 Input: string inputStr = Console.ReadLine();
                     bool isCorrectInputFormat = int.TryParse(inputStr, out int input);
@@ -230,12 +246,7 @@ CreatedDate:{item.CreatedDate}");
                         goto Input;
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    ConsoleColor.Red.WriteConsole("Data not found" + "," + "Please try again:");
-                    goto Id;
-                }
+                
             }
             else
             {
@@ -274,28 +285,31 @@ CreatedDate:{item.CreatedDate}");
         public async Task GetByIdAsync()
         {
             Console.WriteLine("Enter the product id:");
-        CategoryId: string idStr = Console.ReadLine();
+        ProductId: string idStr = Console.ReadLine();
 
             bool isCorrectIdForma = int.TryParse(idStr, out int id);
 
             if (isCorrectIdForma)
             {
-                try
+                var response = await _productServices.GetByIdAsync(id);
+
+                if (response == null)
                 {
-                    var response = await _productServices.GetByIdAsync(id);
-                    ConsoleColor.Blue.WriteConsole(response.Name);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message + "," + "Please try again:");
-                    goto CategoryId;
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto ProductId;
 
                 }
+                ConsoleColor.Blue.WriteConsole(response.Name);
+
+
+
+
+
             }
             else
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                goto CategoryId;
+                goto ProductId;
             }
         }
         public async Task SearchByColorAsync()
@@ -303,7 +317,9 @@ CreatedDate:{item.CreatedDate}");
             Console.WriteLine("Enter the searchtext:");
         Search: string searchText = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(searchText.Trim()))
+            string symbols = @"^[\p{L}\p{M}' \.\-]+$";
+
+            if (string.IsNullOrEmpty(searchText.Trim()) || !Regex.IsMatch(searchText,symbols))
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                 goto Search;
@@ -461,6 +477,175 @@ CreatedDate:{item.CreatedDate}");
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
                 goto Input;
+            }
+        }
+        public async Task FilterByCategoryNameAsync()
+        {
+
+        }
+
+        public async Task UpdateAsync()
+        {
+            foreach (var item in await _productServices.GetAllAsync())
+            {
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.Price} {item.Description} {item.Color} {item.Count} {item.CategoryId} {item.CreatedDate} ");
+
+
+            }
+            Console.WriteLine("Enter the product id:");
+            ProductId: string productIdStr =Console.ReadLine();
+
+            bool isCorrectIdFormat=int.TryParse(productIdStr, out int productId);
+
+            if (isCorrectIdFormat)
+            {
+                var reponse =await _productServices.GetByIdAsync(productId);
+                if(reponse == null)
+                {
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto ProductId;
+                }
+                
+                    var data =await _productServices.GetAllAsync();
+                    Console.WriteLine("Enter the new productName: ");
+                    ProductName: string newProductName=Console.ReadLine();
+
+                    string symbols = @"^[\p{L}\p{M}' \.\-]+$";
+
+                     if (!Regex.IsMatch(newProductName, symbols))
+                     {
+                        if (!string.IsNullOrEmpty(newProductName.Trim()))
+                        {
+                            ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                            goto ProductName;
+                        }
+                     }
+                    
+
+                    foreach (var item in data)
+                    {
+                        if (item.Name == newProductName.ToLower().Trim())
+                        {
+                            ConsoleColor.Red.WriteConsole("Data exist");
+                            goto ProductName;
+                        }
+                    }
+
+                    Console.WriteLine("Enter the new product price:");
+                    ProductPrice: string newProductPriceStr =Console.ReadLine();
+
+                    bool isCorrectPriceFormat = float.TryParse(newProductPriceStr, out float newProductPrice);
+
+                    if (isCorrectPriceFormat)
+                    {
+                        if(newProductPrice <= 0)
+                        {
+                            ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                            goto ProductPrice;
+
+                        }
+
+                        Console.WriteLine("Enter the new product descpriton:");
+                        ProductDescription: string newProductDescption =Console.ReadLine();
+                        if (!Regex.IsMatch(newProductDescption, symbols))
+                        {
+                            if (!string.IsNullOrEmpty(newProductDescption.Trim()))
+                            {
+                                ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                                goto ProductDescription;
+                            }
+                        }
+                        
+
+                        Console.WriteLine("Enter the new product color:");
+                        ProductColor: string newProductColor =Console.ReadLine();
+                        if (!Regex.IsMatch(newProductColor, symbols))
+                        {
+                            ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                            goto ProductColor;
+                        }
+                      
+
+                        Console.WriteLine("Enter the new product count:");
+                        ProductCount: string newProductCountStr =Console.ReadLine();
+
+                        bool isCorrectCountFormat = int.TryParse(newProductCountStr, out int newProductCount);
+
+                        if (isCorrectCountFormat)
+                        {
+                            
+                            if (newProductCount <= 0)
+                            {
+                                ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                                goto ProductCount;
+
+                            }
+                            var response = await _categoryServices.GetAllAsync();
+                            foreach (var item in response)
+                            {
+                                ConsoleColor.Blue.WriteConsole($"{item.Id} {item.Name}");
+                            }
+                            Console.WriteLine("Choose CategoryId");
+                        Id: string idStr = Console.ReadLine();
+                            if (string.IsNullOrEmpty(idStr))
+                            {
+                                ConsoleColor.Red.WriteConsole("This can not be empty");
+                                goto Id;
+                            }
+
+
+
+                            bool isCorrectCategoryIdFormat = int.TryParse(idStr, out int id);
+                            if (isCorrectCategoryIdFormat)
+                            {
+                                if (id <= 0)
+                                {
+                                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                                    goto Id;
+                                }
+
+                                Category category = await _categoryServices.GetByIdAsync(id);
+                                if (category == null)
+                                {
+                                    ConsoleColor.Red.WriteConsole("Category not found");
+                                    return;
+                                }
+                                await _productServices.UpdateAsync(id, new Product
+                                {
+                                    Name = newProductName,
+                                    Price = newProductPrice,
+                                    Description = newProductDescption,
+                                    Color = newProductColor,
+                                    Count = newProductCount
+                                });
+                                ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
+
+
+                            }
+                        }
+                        else
+                        {
+                            ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                            goto ProductCount;
+                        }
+                        
+
+                    }
+                    else
+                    {
+                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                        goto ProductPrice;
+                    }
+
+
+
+
+                
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                goto ProductId;
             }
         }
 

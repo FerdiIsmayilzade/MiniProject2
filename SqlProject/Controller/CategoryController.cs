@@ -38,22 +38,13 @@ namespace SqlProject.Controller
                 Console.WriteLine("Enter the category name:");
             CategoryName: string categoryName = Console.ReadLine();
 
-                string symbols = @"^[A-Za-z\s]+$";
+                string symbols = @"^[\p{L}\p{M}' \.\-]+$";
                 if (string.IsNullOrEmpty(categoryName.Trim()) || !Regex.IsMatch(categoryName,symbols))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto CategoryName;
                 }
-                else if(categoryName.Any(char.IsDigit))
-                {
-                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                    goto CategoryName;
-                }
-                else if (!categoryName.Any(char.IsLetter))
-                {
-                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                    goto CategoryName;
-                }
+               
                 
              
                 foreach(var item in  data)
@@ -84,20 +75,32 @@ namespace SqlProject.Controller
 
         public async Task DeleteAsync()
         {
+            
+            foreach (var item in await _categoryServices.GetAllAsync())
+            {
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.CreatedDate} ");
+
+            }
             Console.WriteLine("Enter the category id:");
             Id: string idStr=Console.ReadLine();
 
             bool isCorrectIdFormat = int.TryParse(idStr, out int id);
             if(isCorrectIdFormat)
             {
-                try
+                var response=await _categoryServices.GetByIdAsync(id);
+
+
+                if (response == null)
                 {
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto Id;
+                }
 
-                    
-                    
 
 
-                        ConsoleColor.Yellow.WriteConsole("Are you sure this category should be deleted?");
+
+
+                ConsoleColor.Yellow.WriteConsole("Are you sure this category should be deleted?");
                           Console.WriteLine("If you are sure, press button 1, if you are not sure, press button 2");
                 Input: string inputStr = Console.ReadLine();
                         bool isCorrectInputFormat = int.TryParse(inputStr, out int input);
@@ -127,12 +130,7 @@ namespace SqlProject.Controller
                             goto Input;
                         }
                     
-                }
-                catch(Exception ex)
-                {
-                    ConsoleColor.Red.WriteConsole("Data not found" + "," + "Please try again:");
-                    goto Id;
-                }
+                
             }
             else
             {
@@ -151,7 +149,7 @@ namespace SqlProject.Controller
                 ConsoleColor.Blue.WriteConsole($"{item.Name} {item.Products}");
             }
         }
-        public async Task SortWithCreatedDay()
+        public async Task SortWithCreatedDayAsync()
         {
             ConsoleColor.Yellow.WriteConsole($@"
 1-Order by
@@ -203,22 +201,15 @@ namespace SqlProject.Controller
         {
             Console.WriteLine("Enter the searchtext:");
             Search: string searchText=Console.ReadLine();
+            
+            string symbols = @"^[\p{L}\p{M}' \.\-]+$";
 
-            if (string.IsNullOrEmpty(searchText.Trim()))
+            if (string.IsNullOrEmpty(searchText.Trim()) || !Regex.IsMatch(searchText,symbols))
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                 goto Search;
             }
-            else if (searchText.Any(char.IsDigit))
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                goto Search;
-            }
-            else if (!searchText.Any(char.IsLetter))
-            {
-                ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                goto Search;
-            }
+            
             var result=await _categoryServices.SearchAsync(searchText);
             if(result.Count()==0)
             {
@@ -236,7 +227,7 @@ namespace SqlProject.Controller
           
             
         }
-        public async Task GetById()
+        public async Task GetByIdAsync()
         {
             Console.WriteLine("Enter the category id:");
             CategoryId: string idStr=Console.ReadLine();
@@ -245,17 +236,18 @@ namespace SqlProject.Controller
 
             if (isCorrectIdFormat)
             {
-                try
-                {
-                    var response = await _categoryServices.GetByIdAsync(id);
-                    ConsoleColor.Blue.WriteConsole(response.Name);
-                }
-                catch(Exception ex)
-                {
-                    ConsoleColor.Red.WriteConsole(ex.Message+","+"Please try again:");
-                    goto CategoryId;
+                var response = await _categoryServices.GetByIdAsync(id);
 
+                if (response == null)
+                {
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto CategoryId;
                 }
+                ConsoleColor.Blue.WriteConsole(response.Name);
+
+
+
+
             }
             else
             {
@@ -265,7 +257,12 @@ namespace SqlProject.Controller
         }
         public async Task UpdateAsync()
         {
-       
+            foreach (var item in await _categoryServices.GetAllAsync())
+            {
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.CreatedDate} ");
+
+            }
+
             Console.WriteLine("Enter the category id:");
         CategoryId: string idStr = Console.ReadLine();
 
@@ -273,8 +270,14 @@ namespace SqlProject.Controller
 
             if (isCorrectIdForma)
             {
-                try
+                var datas = await _categoryServices.GetByIdAsync(id);
+                if(datas == null)
                 {
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto CategoryId;
+                }
+
+                
 
 
                 CategoryName: Console.WriteLine("Enter the new category name:");
@@ -283,7 +286,8 @@ namespace SqlProject.Controller
                     var data = await _categoryServices.GetAllAsync();
 
 
-                    string symbols = @"^[A-Za-z\s]+$";
+                    string symbols = @"^[\p{L}\p{M}' \.\-]+$";
+
                     if (!Regex.IsMatch(newCategoryName, symbols))
                     {
                         if (!string.IsNullOrEmpty(newCategoryName.Trim()))
@@ -292,16 +296,7 @@ namespace SqlProject.Controller
                             goto CategoryName;
                         }
                     }
-                    else if (newCategoryName.Any(char.IsDigit))
-                    {
-                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                        goto CategoryName;
-                    }
-                    else if (!newCategoryName.Any(char.IsLetter))
-                    {
-                        ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
-                        goto CategoryName;
-                    }
+                  
 
                     foreach (var item in data)
                     {
@@ -315,13 +310,8 @@ namespace SqlProject.Controller
 
                     ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
                     await _categoryServices.UpdateAsync(id, new Category { Name = newCategoryName });
-                }
-                catch (Exception ex)
-                {
-                    ConsoleColor.Red.WriteConsole("Data not found" + "," + "Please try again:");
-                    goto CategoryId;
-
-                }
+                
+                
             }
             else
             {
