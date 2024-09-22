@@ -33,6 +33,11 @@ namespace SqlProject.Controller
                     ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto FullName;
                 }
+                else if (!fullName.Any(char.IsLetter))
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                    goto FullName;
+                }
                 
 
                
@@ -83,7 +88,7 @@ namespace SqlProject.Controller
                         goto Email;
                     }
                 }
-                Console.WriteLine("Enter the password(min 8 characters):");
+                Console.WriteLine("Enter the password(at least 8 characters, one uppercase letter):");
             Password: string password = Console.ReadLine();
                 if (string.IsNullOrEmpty(password))
                 {
@@ -144,6 +149,11 @@ namespace SqlProject.Controller
 
         public async Task DeleteAsync()
         {
+            foreach (var item in await _userServices.GetAllAsync())
+            {
+                ConsoleColor.Blue.WriteConsole($@"{item.Id}-FullName:{item.FullName} UserName:{item.UserName} Email:{item.Email} Password:{item.Password}");
+                
+            }
             Console.WriteLine("Enter the category id:");
            Id: string idStr = Console.ReadLine();
 

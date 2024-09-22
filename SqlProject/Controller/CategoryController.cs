@@ -26,7 +26,7 @@ namespace SqlProject.Controller
 
             foreach (var item in result)
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.CreatedDate} ");
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-CategoryName:{item.Name} CreatedDate:{item.CreatedDate} ");
             }
         }
         public async Task CreateAsync()
@@ -39,7 +39,7 @@ namespace SqlProject.Controller
             CategoryName: string categoryName = Console.ReadLine();
 
                 string symbols = @"^[\p{L}\p{M}' \.\-]+$";
-                if (string.IsNullOrEmpty(categoryName.Trim()) || !Regex.IsMatch(categoryName,symbols))
+                if (string.IsNullOrEmpty(categoryName.Trim()) || !Regex.IsMatch(categoryName,symbols) || !categoryName.Any(char.IsLetter))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto CategoryName;
@@ -78,7 +78,7 @@ namespace SqlProject.Controller
             
             foreach (var item in await _categoryServices.GetAllAsync())
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.CreatedDate} ");
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-CategoryName:{item.Name} CreatedDate:{item.CreatedDate} ");
 
             }
             Console.WriteLine("Enter the category id:");
@@ -146,7 +146,7 @@ namespace SqlProject.Controller
             var result=await _categoryServices.GetAllWithProductsAsync();
             foreach (var item in result)
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Name} {item.Products}");
+                ConsoleColor.Blue.WriteConsole($"CategoryName:{item.Name} Products:{item.Products}");
             }
         }
         public async Task SortWithCreatedDayAsync()
@@ -204,7 +204,7 @@ namespace SqlProject.Controller
             
             string symbols = @"^[\p{L}\p{M}' \.\-]+$";
 
-            if (string.IsNullOrEmpty(searchText.Trim()) || !Regex.IsMatch(searchText,symbols))
+            if (string.IsNullOrEmpty(searchText.Trim()) || !Regex.IsMatch(searchText,symbols) || !searchText.Any(char.IsLetter))
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                 goto Search;
@@ -259,7 +259,7 @@ namespace SqlProject.Controller
         {
             foreach (var item in await _categoryServices.GetAllAsync())
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.CreatedDate} ");
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-CategoryName: {item.Name}  CreatedDate:{item.CreatedDate} ");
 
             }
 
@@ -288,7 +288,7 @@ namespace SqlProject.Controller
 
                     string symbols = @"^[\p{L}\p{M}' \.\-]+$";
 
-                    if (!Regex.IsMatch(newCategoryName, symbols))
+                    if (!Regex.IsMatch(newCategoryName, symbols) || !newCategoryName.Any(char.IsLetter))
                     {
                         if (!string.IsNullOrEmpty(newCategoryName.Trim()))
                         {
@@ -296,6 +296,7 @@ namespace SqlProject.Controller
                             goto CategoryName;
                         }
                     }
+                    
                   
 
                     foreach (var item in data)

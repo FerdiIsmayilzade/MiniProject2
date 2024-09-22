@@ -84,7 +84,7 @@ CreatedDate:{item.CreatedDate}");
                     Console.WriteLine("Enter the product color");
                 ProductColor: string productColor = Console.ReadLine();
 
-                    if (string.IsNullOrEmpty(productColor.Trim()) || !Regex.IsMatch(productColor, symbols))
+                    if (string.IsNullOrEmpty(productColor.Trim()) || !Regex.IsMatch(productColor, symbols) || !productColor.Any(char.IsLetter))
                     {
                         ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                         goto ProductColor;
@@ -195,7 +195,7 @@ CreatedDate:{item.CreatedDate}");
         {
             foreach (var item in await _productServices.GetAllAsync())
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.Price} {item.Description} {item.Color} {item.Count} {item.CategoryId} {item.CreatedDate} ");
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-ProductName:{item.Name} ProductPrice:{item.Price} ProductDescription:{item.Description} ProductColor:{item.Color} ProductCount:{item.Count} ProductCategoryId:{item.CategoryId} CreatedDate:{item.CreatedDate} ");
 
             }
             Console.WriteLine("Enter the product id:");
@@ -319,7 +319,7 @@ CreatedDate:{item.CreatedDate}");
 
             string symbols = @"^[\p{L}\p{M}' \.\-]+$";
 
-            if (string.IsNullOrEmpty(searchText.Trim()) || !Regex.IsMatch(searchText,symbols))
+            if (string.IsNullOrEmpty(searchText.Trim()) || !Regex.IsMatch(searchText,symbols) || !searchText.Any(char.IsLetter))
             {
                 ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                 goto Search;
@@ -348,7 +348,7 @@ CreatedDate:{item.CreatedDate}");
             var result=await _categoryServices.GetAllAsync();
             foreach (var item in result)
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Name} {item.Id}");
+                ConsoleColor.Blue.WriteConsole($"CategoryName{item.Name}- {item.Id}");
             }
             CategoryId: Console.WriteLine("Enter the category id:");
             Id: string idStr = Console.ReadLine();
@@ -481,6 +481,28 @@ CreatedDate:{item.CreatedDate}");
         }
         public async Task FilterByCategoryNameAsync()
         {
+            Console.WriteLine("Enter the product name:");
+        FilterName: string productName = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(productName.Trim()))
+            {
+                ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
+                goto FilterName;
+            }
+            var result=await _productServices.FilterByCategoryNameAsync(productName);
+            if (result == null)
+            {
+                ConsoleColor.Red.WriteConsole("Data not found");
+            }
+            else
+            {
+                foreach (var item in result)
+                {
+                    ConsoleColor.Blue.WriteConsole($"{item.Id}-ProductName:{item.Name} ProductPrice:{item.Price} ProductDescription:{item.Description} ProductColor:{item.Color} ProductCount:{item.Count} ProductCategoryId:{item.CategoryId} CreatedDate:{item.CreatedDate} ");
+
+                }
+            }
+
 
         }
 
@@ -488,7 +510,8 @@ CreatedDate:{item.CreatedDate}");
         {
             foreach (var item in await _productServices.GetAllAsync())
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Id}-{item.Name} {item.Price} {item.Description} {item.Color} {item.Count} {item.CategoryId} {item.CreatedDate} ");
+                ConsoleColor.Blue.WriteConsole($"{item.Id}-ProductName:{item.Name} ProductPrice:{item.Price} ProductDescription:{item.Description} ProductColor:{item.Color} ProductCount:{item.Count} ProductCategoryId:{item.CategoryId} CreatedDate:{item.CreatedDate} ");
+
 
 
             }
@@ -559,7 +582,7 @@ CreatedDate:{item.CreatedDate}");
 
                         Console.WriteLine("Enter the new product color:");
                         ProductColor: string newProductColor =Console.ReadLine();
-                        if (!Regex.IsMatch(newProductColor, symbols))
+                        if (!Regex.IsMatch(newProductColor, symbols) || !newProductColor.Any(char.IsLetter))
                         {
                             ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                             goto ProductColor;

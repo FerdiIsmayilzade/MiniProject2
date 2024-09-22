@@ -157,7 +157,7 @@ namespace SqlProject.Helpers.Menues
         }
 
       
-        public static void ShowUserMenu()
+        public  void ShowUserMenu()
         {
             ConsoleColor.Cyan.WriteConsole($@"
 1-Register
@@ -165,13 +165,13 @@ namespace SqlProject.Helpers.Menues
 3-Delete");
         }
 
-        public static void ShowCategoryMenu()
+        public  void ShowCategoryMenu()
         {
             ConsoleColor.Cyan.WriteConsole($@"1-CategoryGetAll,2-CategoryCreate,3-CategoryGetById,4-CategoryDelete,5-CategoryUpdate
 6-CategorySearch,7-CategoryGetAllWithProducts,8-CategorySortWithCreatedDate,9-CategoryGetArchiveCategories");
         }
 
-        public static void ShowProductMenu()
+        public void ShowProductMenu()
         {
             ConsoleColor.Cyan.WriteConsole($@"10-ProductGetAll,11-ProductCreate,12-ProductGetById,13-ProductDelete,14-ProductUpdate,15-ProductSearchByName
 16-ProductFilterByCategoryName,17-ProductGetAllWithCategoryId,18-ProductSortWithPrice,19-ProductSortWithCreatedDate,20-ProductSearchByColor");
