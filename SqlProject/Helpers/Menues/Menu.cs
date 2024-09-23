@@ -45,7 +45,7 @@ namespace SqlProject.Helpers.Menues
 
 
                         case (int)UserMenu.Delete:
-                            userController.DeleteAsync();
+                            await userController.DeleteAsync();
                             break;
                         default:
                             ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);

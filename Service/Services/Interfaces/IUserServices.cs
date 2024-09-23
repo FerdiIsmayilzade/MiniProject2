@@ -12,5 +12,7 @@ namespace Service.Services.Interfaces
 
         Task<bool> CheckAsync(string username, string password);
 
+        Task<User> GetByIdAsync(int id);
+
     }
 }

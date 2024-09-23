@@ -66,7 +66,7 @@ CreatedDate:{item.CreatedDate}");
                 bool isCorrectFormat = float.TryParse(productPriceStr, out float productPrice);
                 if (isCorrectFormat)
                 {
-                    if(productPrice <= 0)
+                    if(productPrice < 0)
                     {
                         ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                         goto ProductPrice;
@@ -100,7 +100,7 @@ CreatedDate:{item.CreatedDate}");
 
                     if (isCorrectCountFormat)
                     {
-                        if(productCount < 0)
+                        if(productCount <= 0)
                         {
                             ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                             goto ProductCount;
@@ -373,7 +373,7 @@ CreatedDate:{item.CreatedDate}");
                         {
                             string str = $"Name-{item.Name + "," + item.CreatedDate}";
 
-                            Console.WriteLine(str);
+                            ConsoleColor.Blue.WriteConsole(str);
                         }
                     }
                   
@@ -490,7 +490,7 @@ CreatedDate:{item.CreatedDate}");
                 goto FilterName;
             }
             var result=await _productServices.FilterByCategoryNameAsync(productName);
-            if (result == null)
+            if (result.Count()==0)
             {
                 ConsoleColor.Red.WriteConsole("Data not found");
             }
@@ -561,7 +561,7 @@ CreatedDate:{item.CreatedDate}");
 
                     if (isCorrectPriceFormat)
                     {
-                        if(newProductPrice <= 0)
+                        if(newProductPrice < 0)
                         {
                             ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                             goto ProductPrice;
@@ -597,7 +597,7 @@ CreatedDate:{item.CreatedDate}");
                         if (isCorrectCountFormat)
                         {
                             
-                            if (newProductCount <= 0)
+                            if (newProductCount < 0)
                             {
                                 ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                                 goto ProductCount;

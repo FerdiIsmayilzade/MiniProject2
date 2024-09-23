@@ -143,11 +143,22 @@ namespace SqlProject.Controller
         
         public async Task GetAllWithProductAsync()
         {
-            var result=await _categoryServices.GetAllWithProductsAsync();
+
+            var result = await _categoryServices.GetAllWithProductsAsync();
             foreach (var item in result)
             {
-                ConsoleColor.Blue.WriteConsole($"CategoryName:{item.Name} Products:{item.Products}");
+                if (item.Products.Count() == 0)
+                {
+                    ConsoleColor.Blue.WriteConsole($"CategoryName:{item.Name} Products:No products ");
+                }
+                else
+                {
+                    var productNames = item.Products.Where(x => x.Name.Count()!=0).ToList();
+                    ConsoleColor.Blue.WriteConsole($"CategoryName:{item.Name} Products:{string.Join("-",productNames.Select(x=>x.Name))}");
+
+                }
             }
+
         }
         public async Task SortWithCreatedDayAsync()
         {
@@ -243,7 +254,7 @@ namespace SqlProject.Controller
                     ConsoleColor.Red.WriteConsole("Data not found");
                     goto CategoryId;
                 }
-                ConsoleColor.Blue.WriteConsole(response.Name);
+                ConsoleColor.Blue.WriteConsole($"{response.Id} CategoryName:{response.Name}");
 
 
 

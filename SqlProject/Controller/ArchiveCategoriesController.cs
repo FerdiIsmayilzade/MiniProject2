@@ -17,7 +17,7 @@ namespace SqlProject.Controller
             var result=await _archiveCategoryServices.GetAllAsync();
             foreach (var item in result)
             {
-                ConsoleColor.Blue.WriteConsole($"{item.Id} {item.Operation} {item.CreatedDate} {item.Name}");
+                ConsoleColor.Blue.WriteConsole($"{item.Id} Operation:{item.Operation} CreatedDate:{item.CreatedDate} DeletedCategoryName:{item.Name}");
             }
         }
     }

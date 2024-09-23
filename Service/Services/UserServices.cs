@@ -34,5 +34,10 @@ namespace Service.Services
         {
             return _userRepository.GetAllAsync();
         }
+
+        public Task<User> GetByIdAsync(int id)
+        {
+            return _userRepository.GetByIdAsync(id);
+        }
     }
 }

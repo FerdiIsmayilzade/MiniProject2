@@ -88,26 +88,29 @@ namespace SqlProject.Controller
                         goto Email;
                     }
                 }
-                Console.WriteLine("Enter the password(at least 8 characters, one uppercase letter):");
+                Console.WriteLine("Enter the password(at least 8 characters, one uppercase letter,min 1 number):");
             Password: string password = Console.ReadLine();
-                if (string.IsNullOrEmpty(password))
+                if (string.IsNullOrEmpty(password.Trim()))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
                     goto Password;
                 }
-                for (int i = 0; i < password.Length; i++)
+                else if(!password.Any(char.IsDigit))
                 {
-                    if (Convert.ToInt32(password[i]) != null && password[i].ToString() != password[i].ToString().ToLower() && password.Length >= 8)
-                    {
-                        await _userServices.CreateAsync(new User { FullName = fullName, UserName = username, Email = email, Password = password });
-                        ConsoleColor.Green.WriteConsole(SuccesfullMessages.SuccessfullOperation);
-                    }
-                    else
-                    {
-                        ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
-                        goto Password;
-                    }
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    goto Password;
                 }
+                else if (password.ToString() == password.ToString().ToLower())
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    goto Password;
+                }
+                else if (password.Length < 8)
+                {
+                    ConsoleColor.Red.WriteConsole(ErrorMessages.WrongInput);
+                    goto Password;
+                }
+              
 
             }
             catch(Exception ex)
@@ -154,20 +157,26 @@ namespace SqlProject.Controller
                 ConsoleColor.Blue.WriteConsole($@"{item.Id}-FullName:{item.FullName} UserName:{item.UserName} Email:{item.Email} Password:{item.Password}");
                 
             }
-            Console.WriteLine("Enter the category id:");
+            Console.WriteLine("Enter the user id:");
            Id: string idStr = Console.ReadLine();
 
             bool isCorrectIdFormat = int.TryParse(idStr, out int id);
             if (isCorrectIdFormat)
             {
-                try
+                var response = await _userServices.GetByIdAsync(id);
+
+
+                if (response == null)
                 {
+                    ConsoleColor.Red.WriteConsole("Data not found");
+                    goto Id;
+                }
 
 
 
 
 
-                    ConsoleColor.Yellow.WriteConsole("Are you sure this user should be deleted?");
+                ConsoleColor.Yellow.WriteConsole("Are you sure this user should be deleted?");
                       Console.WriteLine("If you are sure, press button 1, if you are not sure, press button 2");
 
                 Input: string inputStr = Console.ReadLine();
@@ -198,12 +207,7 @@ namespace SqlProject.Controller
                         goto Input;
                     }
 
-                }
-                catch (Exception ex)
-                {
-                    ConsoleColor.Red.WriteConsole("Data not found" + "," + "Please try again:");
-                    goto Id;
-                }
+              
             }
             else
             {
