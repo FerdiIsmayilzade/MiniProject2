@@ -84,7 +84,7 @@ CreatedDate:{item.CreatedDate}");
                     Console.WriteLine("Enter the product color");
                 ProductColor: string productColor = Console.ReadLine();
 
-                    if (string.IsNullOrEmpty(productColor.Trim()) || !Regex.IsMatch(productColor, symbols) || !productColor.Any(char.IsLetter))
+                    if (string.IsNullOrEmpty(productColor.Trim()) || !Regex.IsMatch(productColor, symbols))
                     {
                         ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                         goto ProductColor;
@@ -582,7 +582,7 @@ CreatedDate:{item.CreatedDate}");
 
                         Console.WriteLine("Enter the new product color:");
                         ProductColor: string newProductColor =Console.ReadLine();
-                        if (!Regex.IsMatch(newProductColor, symbols) || !newProductColor.Any(char.IsLetter))
+                        if (!Regex.IsMatch(newProductColor, symbols))
                         {
                             ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                             goto ProductColor;

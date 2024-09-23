@@ -39,7 +39,7 @@ namespace SqlProject.Controller
             CategoryName: string categoryName = Console.ReadLine();
 
                 string symbols = @"^[\p{L}\p{M}' \.\-]+$";
-                if (string.IsNullOrEmpty(categoryName.Trim()) || !Regex.IsMatch(categoryName,symbols) || !categoryName.Any(char.IsLetter))
+                if (string.IsNullOrEmpty(categoryName.Trim()) || !Regex.IsMatch(categoryName,symbols))
                 {
                     ConsoleColor.Red.WriteConsole(ErrorMessages.FormatWrong);
                     goto CategoryName;
@@ -299,7 +299,7 @@ namespace SqlProject.Controller
 
                     string symbols = @"^[\p{L}\p{M}' \.\-]+$";
 
-                    if (!Regex.IsMatch(newCategoryName, symbols) || !newCategoryName.Any(char.IsLetter))
+                    if (!Regex.IsMatch(newCategoryName, symbols))
                     {
                         if (!string.IsNullOrEmpty(newCategoryName.Trim()))
                         {
